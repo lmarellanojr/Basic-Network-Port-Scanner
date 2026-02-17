@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Port Scanner
+Comment=TCP Port Scanning - Portable Edition
+Exec=/home/hanzi/Documents/mmdc/SSP/MS2/Homework4/PortScannerPortable/PortScannerPortable.sh
+Path=/home/hanzi/Documents/mmdc/SSP/MS2/Homework4/PortScannerPortable
+Terminal=false
+Categories=Network;Security;
+StartupNotify=true

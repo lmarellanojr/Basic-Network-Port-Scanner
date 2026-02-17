@@ -1,0 +1,100 @@
+Port Scanner - Portable Edition
+================================
+PortableApps.com Format 3.9 Compatible
+Part of a suite of security utilities.
+
+
+REQUIREMENTS
+------------
+
+  - No installation needed. Copy the PortScannerPortable/
+    folder to any USB drive, external disk, or local directory and run.
+  - No administrator privileges required (uses standard TCP sockets).
+
+
+HOW TO RUN
+----------
+
+  LINUX:
+    Option A - Double-click (recommended):
+      1. Open the PortScannerPortable/ folder in your
+         file manager.
+      2. Double-click "Port Scanner".
+         (This is the PortScannerPortable.desktop file.)
+      3. The app launches directly — no password needed.
+
+      Note: If your file manager asks what to do with the
+      .desktop file, choose "Trust and Launch" or
+      "Mark as Executable", then double-click again.
+
+    Option B - Terminal:
+      1. Open a terminal in the PortScannerPortable/ folder.
+      2. Run:  ./PortScannerPortable.sh
+      3. The GUI window will open.
+
+    CLI mode (no GUI):
+      ./PortScannerPortable.sh --cli
+
+  WINDOWS:
+    1. Navigate to the PortScannerPortable\ folder.
+    2. Double-click PortScannerPortable.bat.
+    3. CLI mode (no GUI):
+         Open Command Prompt, then:
+         PortScannerPortable.bat --cli
+
+  macOS:
+    Option A - Double-click (recommended):
+      1. Open the PortScannerPortable/ folder in Finder.
+      2. Double-click "PortScannerPortable.command".
+         Terminal will open and launch the app automatically.
+
+      Note: On first run, macOS may block it. If so:
+        - Right-click the file -> Open -> Open
+        - Or go to System Settings -> Privacy & Security
+          and click "Open Anyway".
+
+    Option B - Terminal:
+      1. Open Terminal and navigate to the
+         PortScannerPortable/ folder.
+      2. Launch the app:
+           ./PortScannerPortable.sh
+
+    CLI mode (no GUI):
+      ./PortScannerPortable.sh --cli
+
+
+HOW TO BUILD THE BINARY
+-----------------------
+
+  1. Install the build dependency:
+       pip install pyinstaller
+
+  2. Build the executable:
+       cd App/PortScanner/
+       python3 build.py
+
+  3. The binary is placed in App/PortScanner/ automatically.
+     Build artifacts are cleaned up after a successful build.
+
+  Note: The build produces a native binary for the current OS.
+    - Linux:   ELF executable
+    - Windows: .exe executable
+    - macOS:   Mach-O executable
+
+
+WHERE IS MY DATA?
+-----------------
+
+  Logs:     Data/logs/
+  Settings: Data/settings/settings.ini
+
+  To reset to defaults, delete the Data/ folder.
+  It will be recreated from App/DefaultData/ on next launch.
+
+
+PORTABILITY
+-----------
+
+  Copy the entire PortScannerPortable/ folder to any
+  USB drive or external disk. No installation needed. No system files
+  or registry entries are modified. Works fully offline.
