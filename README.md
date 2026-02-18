@@ -16,61 +16,106 @@ Repository layout
 - Data/: user data directory (logs and settings, created at first run)
 
 Requirements
-- Python 3.8+ (recommended)
-- No administrator privileges required (uses standard TCP sockets)
+- No installation needed. Copy the PortScannerPortable/ folder to any USB drive, external disk, or local directory and run.
+- No administrator privileges required (uses standard TCP sockets).
+- Python 3.8+ is only needed if no compiled binary is present.
 
-Installation
+How to run
 
-Option A — Run the portable bundle (recommended)
-On Linux/macOS (from repository root):
+**Linux:**
+
+Option A — Double-click (recommended):
+1. Open the PortScannerPortable/ folder in your file manager.
+2. Double-click "Port Scanner" (the PortScannerPortable.desktop file).
+3. The app launches directly — no password needed.
+
+> Note: If your file manager asks what to do with the .desktop file, choose "Trust and Launch" or "Mark as Executable", then double-click again.
+
+Option B — Terminal:
 
 ```bash
 chmod +x PortScannerPortable.sh
 ./PortScannerPortable.sh
 ```
 
-On Windows: double-click PortScannerPortable.bat or run it from a Command Prompt.
-
-On macOS: double-click PortScannerPortable.command, or run the .sh from Terminal.
-
-Option B — Run from source
-1. Navigate to the app directory:
-
-```bash
-cd App/PortScanner
-```
-2. Run the scanner:
-
-```bash
-python3 main.py
-```
-
-Usage
-- The portable launchers start the GUI and load configuration from the default settings.
-- CLI mode (no GUI): pass the `--cli` flag to any launcher.
+CLI mode (no GUI):
 
 ```bash
 ./PortScannerPortable.sh --cli
 ```
 
-- If running from source, the main entrypoints are:
+**Windows:**
+1. Navigate to the PortScannerPortable\ folder.
+2. Double-click `PortScannerPortable.bat`.
 
-- GUI (source): `App/PortScanner/main.py`
-- CLI (source): `App/PortScanner/main.py --cli`
+CLI mode (no GUI): open Command Prompt, then run:
+
+```
+PortScannerPortable.bat --cli
+```
+
+**macOS:**
+
+Option A — Double-click (recommended):
+1. Open the PortScannerPortable/ folder in Finder.
+2. Double-click `PortScannerPortable.command`. Terminal will open and launch the app automatically.
+
+> Note: On first run, macOS may block it. Right-click the file → Open → Open, or go to System Settings → Privacy & Security and click "Open Anyway".
+
+Option B — Terminal:
+
+```bash
+./PortScannerPortable.sh
+```
+
+CLI mode (no GUI):
+
+```bash
+./PortScannerPortable.sh --cli
+```
+
+**Run from source (any platform):**
+
+```bash
+cd App/PortScanner
+python3 main.py           # GUI mode
+python3 main.py --cli     # CLI mode
+```
+
+How to build the binary
+
+1. Install the build dependency:
+
+```bash
+pip install pyinstaller
+```
+
+2. Build the executable:
+
+```bash
+cd App/PortScanner/
+python3 build.py
+```
+
+3. The binary is placed in App/PortScanner/ automatically. Build artifacts are cleaned up after a successful build.
+
+> Note: The build produces a native binary for the current OS — ELF on Linux, .exe on Windows, Mach-O on macOS.
 
 Configuration
 - Default configuration files can be found in `App/DefaultData/settings/settings.ini` and `Data/settings/`.
-- To persist settings across runs, edit the settings under `Data/settings/settings.ini` (or the corresponding path in the portable bundle).
+- To persist settings across runs, edit the settings under `Data/settings/settings.ini`.
 
 Logs and data
 - Exported scan logs are saved to the `Data/logs/` directory.
 - To reset to defaults, delete the `Data/` folder. It will be recreated from `App/DefaultData/` on next launch.
 
+Portability
+- Copy the entire PortScannerPortable/ folder to any USB drive or external disk. No installation needed. No system files or registry entries are modified. Works fully offline.
+
 Troubleshooting
-- Missing Python:
-  - The launcher will fall back from the compiled binary to Python source automatically. Ensure Python 3.8+ is installed if no compiled binary is present.
+- Missing Python: the launcher will fall back from the compiled binary to Python source automatically. Ensure Python 3.8+ is installed if no compiled binary is present.
 - If the GUI fails to start, check that `tkinter` is installed (it is included with most Python distributions).
-- On macOS, you may need to allow Terminal in System Settings -> Privacy & Security -> App Management.
+- On macOS, you may need to allow Terminal in System Settings → Privacy & Security → App Management.
 
 Contributing
 - Contributions are welcome. Please open issues for bugs or feature requests. For code contributions, fork the repository, create a branch, and submit a pull request with a clear description of the change.
